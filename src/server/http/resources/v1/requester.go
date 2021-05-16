@@ -77,7 +77,6 @@ func (cr *URLResource) URLList(w http.ResponseWriter, r *http.Request) {
 	case <-ctx.Done():
 		return
 	case res := <-responses:
-		log.Println(res[0])
 		if err := json.NewEncoder(w).Encode(&res); err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
