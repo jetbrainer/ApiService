@@ -60,7 +60,7 @@ func (s *HTTPServer) Run(cancel context.CancelFunc) {
 	// Run server
 	go func() {
 		if s.keyFile != "" && s.certFile != "" {
-			if err := srv.ListenAndServe(); err != http.ErrServerClosed {
+			if err := srv.ListenAndServeTLS(s.certFile, s.keyFile); err != http.ErrServerClosed {
 				log.Fatalf("HTTP server ListenAndServe: %v", err)
 			}
 		}
